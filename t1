@@ -1,0 +1,91 @@
+<!-- Pixel Tracking Interactive -->
+
+<!-- Facebook Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'YOUR_PIXEL_ID'); // Ganti dengan Pixel ID kamu
+  fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" 
+  src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
+</noscript>
+
+<!-- Animasi Pixel Tracker -->
+<style>
+.pixel-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #4e54c8, #8f94fb);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideUp 1s ease-out;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.pixel-icon {
+  width: 20px;
+  height: 20px;
+  border: 2px solid white;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 1s linear infinite;
+}
+
+.pixel-check {
+  display: none;
+  font-size: 20px;
+  animation: pop 0.5s ease-in;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pop {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+</style>
+
+<div class="pixel-container" id="pixelStatus">
+  <div class="pixel-icon" id="pixelLoader"></div>
+  <div class="pixel-check" id="pixelCheck">✔</div>
+  <span id="pixelText">Mengaktifkan Pixel...</span>
+</div>
+
+<script>
+// Simulasi deteksi aktifnya Pixel
+setTimeout(() => {
+  document.getElementById("pixelLoader").style.display = "none";
+  document.getElementById("pixelCheck").style.display = "block";
+  document.getElementById("pixelText").textContent = "Pixel Aktif ✅";
+}, 2500);
+
+// Klik untuk menyembunyikan notifikasi
+document.getElementById("pixelStatus").addEventListener("click", () => {
+  document.getElementById("pixelStatus").style.display = "none";
+});
+</script>
